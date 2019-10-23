@@ -60,10 +60,10 @@ class HttpManager {
     //必须才能抓到接口
     (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (client) {
-      client.findProxy = (Uri) {
-        // 用1个开关设置是否开启代理
-        return 'PROXY 192.168.1.43:8888';
-      };
+//      client.findProxy = (Uri) {
+//        // 用1个开关设置是否开启代理
+//        return 'PROXY 192.168.1.43:8888';
+//      };
       //校验证书
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) {

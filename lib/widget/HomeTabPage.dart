@@ -49,11 +49,7 @@ class _HomeTabPageState extends State<HomeTabPageState> {
   @override
   Widget build(BuildContext context) {
     final controller = TextEditingController();
-//    final List<String> picList = [
-//      "http://jjw-img.oss-cn-shenzhen.aliyuncs.com/UserImage/1566525489448.jpg?x-oss-process=style/w300_h300",
-//      "http://jjw-img.oss-cn-shenzhen.aliyuncs.com/UserImage/1567395666519.jpg?x-oss-process=style/w300_h300",
-//      "http://jjw-img.oss-cn-shenzhen.aliyuncs.com/UserImage/1567395815699.jpg?x-oss-process=style/w300_h300"
-//    ];
+
     if (hitMovieEntity != null) {
       picList = hitMovieEntity.subjects;
     }
@@ -100,6 +96,7 @@ class _HomeTabPageState extends State<HomeTabPageState> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         new Expanded(
+
           child: new Container(
             padding: EdgeInsets.only(top: 15, left: 10),
             child: new Text(
