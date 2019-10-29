@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/net/http_manager.dart';
 import "package:http/http.dart" as http; //导入网络请求相关的包
 import 'dart:convert';
 //import 'dart:io';
@@ -36,16 +37,15 @@ class _MessagePageState extends State<MessagePageState> {
   }
 
   void _pullNet() async {
-    await http
-        .get("http://www.wanandroid.com/project/list/1/json?cid=1")
-        .then((http.Response response) {
-//      print("response is" + response.toString());
-      var converDataToJson = json.decode(response.body);
-      converDataToJson = converDataToJson["data"]["datas"];
-      setState(() {
-        data = converDataToJson;
-      });
-    });
+//    Map<String, String> weatherNowRequestBean = {
+//      "location": "武汉",
+//      "client": "somemessage",
+//      "udid": "dddddddddddddddddddddd",
+//      "start": newMovieStart.toString(),
+//      "count": "9"
+//    };
+//    HttpManager.getInstanc().get(
+//        "https://api.heweather.net/s6/weather/now?", parameters:)
   }
 
   List<Widget> _getItem() {

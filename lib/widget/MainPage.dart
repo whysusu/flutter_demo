@@ -1,10 +1,10 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/widget/HomeTabPage.dart';
 import 'package:flutter_demo/widget/MessagePage.dart';
 import 'package:flutter_demo/widget/PersonalCenterPage.dart';
 
 class MainPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -21,23 +21,29 @@ class MainPageWidget extends StatefulWidget {
   }
 }
 
-class MainPageState extends State<MainPageWidget> with AutomaticKeepAliveClientMixin{
+class MainPageState extends State<MainPageWidget>
+    with AutomaticKeepAliveClientMixin {
   int tabIndex = 0;
   var tabImage;
-  var tabTitle = ['首页', '消息', '我的'];
+  var tabTitle = ['电影', '天气', '我的'];
   var bodys;
 
   /*
    * 根据索引获得对应的normal或是press的icon
    */
-  Image getTabImage(path) {
-    return new Image.asset(path, width: 20.0, height: 20.0);
+  Icon getTabImage(path, color) {
+    return new Icon(
+      path,
+      size: 25,
+      color: color,
+    );
+//    return new Image.asset(path, width: 20.0, height: 20.0);
   }
 
   /*
    * 根据索引获得对应的normal或是press的icon
    */
-  Image getTabIcon(int curIndex) {
+  Icon getTabIcon(int curIndex) {
     if (curIndex == tabIndex) {
       return tabImage[curIndex][0];
     }
@@ -50,19 +56,19 @@ class MainPageState extends State<MainPageWidget> with AutomaticKeepAliveClientM
   Text getTabTitle(int curIndex) {
     if (curIndex == tabIndex) {
       return new Text(tabTitle[curIndex],
-          style: new TextStyle(color: const Color(0xff5CA52A)));
+          style: new TextStyle(color: Colors.cyan[300]));
     } else {
       return new Text(tabTitle[curIndex],
-          style: new TextStyle(color: const Color(0xff888888)));
+          style: new TextStyle(color: Colors.grey[400]));
     }
   }
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     initData();
@@ -92,18 +98,24 @@ class MainPageState extends State<MainPageWidget> with AutomaticKeepAliveClientM
     tabImage = [
       [
         //首页
-        getTabImage('images/img_bottom_index_select_v2.png'),
-        getTabImage('images/img_bottom_index_v2.png')
+//        getTabImage('images/img_bottom_index_select_v2.png'),
+//        getTabImage('images/img_bottom_index_v2.png')
+        getTabImage(Icons.movie_filter, Colors.cyan[300]),
+        getTabImage(Icons.movie_filter, Colors.grey[400])
       ],
       [
-        //消息
-        getTabImage('images/img_bottom_mess_select_v2.png'),
-        getTabImage('images/img_bottom_mess_v2.png')
+        //天气
+//        getTabImage('images/img_bottom_mess_select_v2.png'),
+//        getTabImage('images/img_bottom_mess_v2.png')
+        getTabImage(Icons.cloud, Colors.cyan[300]),
+        getTabImage(Icons.cloud, Colors.grey[400])
       ],
       [
         //我的
-        getTabImage('images/img_bottom_my_select_v2.png'),
-        getTabImage('images/img_bottom_my_v2.png')
+//        getTabImage('images/img_bottom_my_select_v2.png'),
+//        getTabImage('images/img_bottom_my_v2.png')
+        getTabImage(Icons.person, Colors.cyan[300]),
+        getTabImage(Icons.person, Colors.grey[400])
       ]
     ];
 

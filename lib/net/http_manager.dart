@@ -61,7 +61,7 @@ class HttpManager {
     (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (client) {
 //      client.findProxy = (Uri) {
-//        // 用1个开关设置是否开启代理
+//        // 设置了代理需要将这段代码打开才能抓到接口
 //        return 'PROXY 192.168.1.43:8888';
 //      };
       //校验证书

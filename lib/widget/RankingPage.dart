@@ -72,62 +72,103 @@ class RankingPageWidget extends State with SingleTickerProviderStateMixin {
         body: TabBarView(
           controller: controller,
           children: <Widget>[
-            EasyRefresh(
-              child: ListView.builder(
-                  itemCount: newMovieEntity.subjects.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return movieItem(index, 1);
-                  }),
-              header: TaurusHeader(),
-              footer: TaurusFooter(),
-              onRefresh: () async {
-                newMovieStart = 0;
-                newMovieRequest();
-              },
-              onLoad: () async {
-                newMovieStart++;
-                newMovieRequest();
-              },
+            newMovieRefresh(),
+            weeklyMovieStartRefresh(),
+            usBoxMovieRefresh(),
+          ],
+        ));
+  }
+
+  Widget usBoxMovieRefresh() {
+    if (usBoxMovieEntity != null) {
+      return EasyRefresh(
+        child: ListView.builder(
+            itemCount: usBoxMovieEntity.subjects.length,
+            itemBuilder: (BuildContext context, int index) {
+              return movieItem(index, 3);
+            }),
+        header: TaurusHeader(),
+        footer: TaurusFooter(),
+        onRefresh: () async {
+          usBoxMovieStart = 0;
+          usMovieRequest();
+        },
+        onLoad: () async {
+          usBoxMovieStart++;
+          usMovieRequest();
+        },
+      );
+    } else {
+      return loadingWidget();
+    }
+  }
+
+  Widget weeklyMovieStartRefresh() {
+    if (weeklyMovieEntity != null) {
+      return EasyRefresh(
+        header: TaurusHeader(),
+        footer: TaurusFooter(),
+        onRefresh: () async {
+          weeklyMovieStart = 0;
+          weeklyMovieRequest();
+        },
+        onLoad: () async {
+          weeklyMovieStart++;
+          weeklyMovieRequest();
+        },
+        child: ListView.builder(
+            itemCount: weeklyMovieEntity.subjects.length,
+            itemBuilder: (BuildContext context, int index) {
+              return movieItem(index, 2);
+            }),
+      );
+    } else {
+      return loadingWidget();
+    }
+  }
+
+  Widget newMovieRefresh() {
+    if (newMovieEntity != null) {
+      return EasyRefresh(
+        child: ListView.builder(
+            itemCount: newMovieEntity.subjects.length,
+            itemBuilder: (BuildContext context, int index) {
+              return movieItem(index, 1);
+            }),
+        header: TaurusHeader(),
+        footer: TaurusFooter(),
+        onRefresh: () async {
+          newMovieStart = 0;
+          newMovieRequest();
+        },
+        onLoad: () async {
+          newMovieStart++;
+          newMovieRequest();
+        },
 //              enableControlFinishLoad: true,
 //              enableControlFinishRefresh: true,
 //              controller: refreshController,
+      );
+    } else {
+      return loadingWidget();
+    }
+  }
+
+  Container loadingWidget() {
+    return new Container(
+      height: 300.0,
+      child: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new CircularProgressIndicator(
+              strokeWidth: 1.0,
             ),
-            EasyRefresh(
-              header: TaurusHeader(),
-              footer: TaurusFooter(),
-              onRefresh: () async {
-                weeklyMovieStart = 0;
-                weeklyMovieRequest();
-              },
-              onLoad: () async {
-                weeklyMovieStart++;
-                weeklyMovieRequest();
-              },
-              child: ListView.builder(
-                  itemCount: weeklyMovieEntity.subjects.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return movieItem(index, 2);
-                  }),
-            ),
-            EasyRefresh(
-              child: ListView.builder(
-                  itemCount: usBoxMovieEntity.subjects.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return movieItem(index, 3);
-                  }),
-              header: TaurusHeader(),
-              footer: TaurusFooter(),
-              onRefresh: () async {
-                usBoxMovieStart = 0;
-                usMovieRequest();
-              },
-              onLoad: () async {
-                usBoxMovieStart++;
-                usMovieRequest();
-              },
-            ),
+            new Text("正在加载...")
           ],
-        ));
+        ),
+      ),
+    );
   }
 
   ///电影列表

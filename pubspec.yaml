@@ -32,6 +32,7 @@ dependencies:
   crypto: ^2.1.2
   provider: ^2.0.1
   flutter_easyrefresh: ^2.0.4
+  curved_navigation_bar: ^0.3.1
 #  flutter_boost: ^0.1.52
 
 
