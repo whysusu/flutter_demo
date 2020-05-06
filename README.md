@@ -16,4 +16,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
-这个项目是我在学习flutter之初，用来练习app一系列流程来完成的一个简单的项目，因为开始还不了解flutter开发时怎么回事，所以我在项目中没有分模块，这里只是使用了自带的一些基础控件完成了列表展示，网络请求数据绑定，页面跳转，刷新和加载更多，tab切换等简单的功能。
+这个项目是我在学习flutter之初，用来练习app一系列流程来完成的一个简单的项目，因为开始还不了解flutter开发是怎么回事，所以我在项目中没有分模块，这里只是使用了自带的一些基础控件完成了列表展示，网络请求数据绑定，页面跳转，刷新和加载更多，tab切换等简单的功能。
